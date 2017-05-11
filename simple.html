@@ -84,14 +84,47 @@
                         $dst.text(currentText);
                     }
                 });
+				   $("#btnsbmt").click(function(){
+                    divObj = document.getElementById("destination");
+                    var result=divObj.textContent;
+					  var str=result.replace(/\s/g, '');
+                    if(str=="APPLE")
+                    {
+                    alert("HELLO!,Answer is CORRECT");
+                    }
+                    else{
+                    alert("HELLO.WRONG!");
+                    }
+                    });
             });
+			var s=59
+            var m=1
+            var q
+            function quizCount()
+             {
+               document.getElementById('timer').value=m+":"+s+" remaining"
+                  s=s-1
+                   q=setTimeout("quizCount()", 1000)
+                    if (s<1)
+                     { m=m-1; s=59;}
+
+                      if (m<0)
+                      {
+                        quizStop();
+                      }
+                 }
+               function quizStop()
+               {
+                clearTimeout(q)
+                document.getElementById('timer').value="Your Time Was Finished"
+               }
         </script>
     </head>
     <body>
         <div class="header">
             <h1>Quiz Questions to Solve</h1>
         </div>
-
+		<h1>Fruit Name starts with letter 'A'</h1>
         <div class="content">
             <div id="source1" class="source boxes">
                 <div>A</div>
@@ -125,13 +158,21 @@
                 <div>W</div>
                 <div>X</div>
             </div>
+		</div>
 		    <div id="source5" class="source boxes">
                 <div>Y</div>
                 <div>Z</div>
             </div>
             <div id="destination" class="drop boxes">
-            </div>
-         
+			</div>
+			<div class="wrapper">
+    <button class="button" id="btnsbmt" >Check</button>
+</div>
+    <form>
+<input type="button" value="Start Count" onClick="quizCount()">
+<input type="button" value="Quiz Timer" id="timer">
+<input type="button" value="Stop Count" onClick="quizStop()">
+</form>
     </body><script type="text/javascript">
 
   var _gaq = _gaq || [];
